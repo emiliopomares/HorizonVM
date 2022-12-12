@@ -31,14 +31,18 @@ namespace Axioma
             {
                 private:
                     bool running;
+                    std::string ipAddress;
                     std::thread *thread;
                     void serverRun();
+                    void broadcastRun();
+                    void processMessage(uint8_t *data, int length, std::string sourceAddress);
                 public:
-                    Server();
+                    Server(std::string _ipAddress);
                     ~Server();
                     OperationStatus initialize(std::string bindAddress, std::string port);
                     OperationStatus broadcast(uint8_t * buffer, int size);
-                    void listen(uint8_t *buffer, int maxSize);
+                    std::thread startBroadcasting(std::string ip);
+                    std::thread listenBroadcast(uint8_t *buffer, int maxSize);
             };
 
             class Client
