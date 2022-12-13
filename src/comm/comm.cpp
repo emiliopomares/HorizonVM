@@ -1,6 +1,9 @@
 #include "comm.h"
 #include "../utils/network/networkUtils.h"
-#include <boost/asio.hpp>
+#ifndef BOOST
+  #include <boost/asio.hpp>
+  #define BOOST
+#endif
 #include <boost/array.hpp>
 
 Axioma::HorizonVM::Networking::Server::Server(std::string _ipAddress) 

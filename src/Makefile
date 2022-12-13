@@ -3,7 +3,7 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	CC = g++
-	LDFLAGS = -pthread -lpthread
+	LDFLAGS = -pthread -lpthread -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ERROR_CODE_HEADER_ONLY
 endif
 ifeq ($(UNAME_S),Darwin)
 	CC = clang++
